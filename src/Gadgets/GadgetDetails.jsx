@@ -111,8 +111,8 @@ const GadgetDetails = () => {
                 {/* rating */}
 
                 {/* buttons div */}
-                <div className="flex gap-3 mt-4">
-                  <button className="btn btn-wide bg-[#9538E2] text-white rounded-full">
+                <div className="flex gap-3 mt-4 ">
+                  <button className="btn md:btn-wide bg-[#9538E2] text-white rounded-full">
                     Add To Card
                     <i className="fa-solid fa-cart-shopping"></i>
                   </button>
