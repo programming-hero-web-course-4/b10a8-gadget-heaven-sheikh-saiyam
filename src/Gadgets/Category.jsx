@@ -10,7 +10,7 @@ const Category = ({ categories }) => {
               to={`/${category.category}`}
               className={({ isActive }) =>
                 `btn w-full rounded-full shadow-sm my-2 ${
-                  isActive ? "bg-[#9538E2] text-white" : "bg-white"
+                  isActive ? "bg-[#9538E2] text-white" : "bg-[#f2f2f3] text-[#66666a]"
                 }`
               }
             >

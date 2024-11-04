@@ -9,8 +9,8 @@ const HomePage = () => {
         <div className="text-center">
           <h1 className="text-4xl font-bold">Explore Cutting-Edge Gadgets</h1>
         </div>
-        <div className="space-y-6 md:flex md:space-y-0 gap-6 mt-8">
-          <div className="md:w-3/12">
+        <div className="space-y-6 md:flex md:space-y-0 gap-4 mt-8">
+          <div className="md:w-3/12 lg:w-2/12">
             <Category categories={categories}></Category>
           </div>
           <div className="w-full">
