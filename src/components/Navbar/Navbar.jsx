@@ -1,10 +1,20 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
 import bannerImg from "../../assets/banner.jpg";
+import { useEffect, useState } from "react";
 const Navbar = () => {
   const { pathname } = useLocation();
+  console.log(pathname);
+  const [isActive, setIsActive] = useState(false);
+  const pathNames = ["/statistics", "/dashboard", "/about" , "/gadgets"];
+
+
+  useEffect(() => {
+    const include = pathNames.some((path)=> pathname.includes(path));
+    setIsActive(include);
+  }, [pathname]);
   return (
     <div>
-      {pathname === "/" ? (
+      {!isActive ? (
         <div className="pb-96 bg-[#f6f6f6]">
           <div className="m-8 bg-[#9538E2] rounded-3xl min-h-screen pb-12">
             <div className="navbar text-white w-11/12 mx-auto md:w-10/12 max-w-screen-2xl">
@@ -34,25 +44,86 @@ const Navbar = () => {
                     tabIndex={0}
                     className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
                   >
-                <div className="menu menu-vertical space-y-4 font-semibold">
-                  <NavLink to='/' className={({isActive})=> isActive?"underline":""}>Home</NavLink>
-                  <NavLink to='/statistics' className={({isActive})=> isActive?"underline":""}>Statistics</NavLink>
-                  <NavLink to='/dashboard' className={({isActive})=> isActive?"underline":""}>Dashboard</NavLink>
-                  <NavLink to='/about' className={({isActive})=> isActive?"underline":""}>About Us</NavLink>
-                </div>
+                    <div className="menu menu-vertical space-y-4 font-semibold">
+                      <NavLink
+                        to="/"
+                        className={({ isActive }) =>
+                          isActive ? "underline" : ""
+                        }
+                      >
+                        Home
+                      </NavLink>
+                      <NavLink
+                        to="/statistics"
+                        className={({ isActive }) =>
+                          isActive ? "underline" : ""
+                        }
+                      >
+                        Statistics
+                      </NavLink>
+                      <NavLink
+                        to="/dashboard"
+                        className={({ isActive }) =>
+                          isActive ? "underline" : ""
+                        }
+                      >
+                        Dashboard
+                      </NavLink>
+                      <NavLink
+                        to="/about"
+                        className={({ isActive }) =>
+                          isActive ? "underline" : ""
+                        }
+                      >
+                        About Us
+                      </NavLink>
+                    </div>
+
+                    <div className="flex gap-4 mt-2 p-2 bg-base-200 rounded-2xl">
+                      <button className="rounded-full border border-[#d6d6d6d] bg-white h-10  px-3">
+                        <i className="fa-solid fa-cart-shopping text-black"></i>
+                      </button>
+                      <button className="rounded-full border border-[#d6d6d6d] bg-white h-10  px-3">
+                        <i className="fa-regular fa-heart text-black"></i>
+                      </button>
+                    </div>
                   </ul>
                 </div>
-                <Link to='/' className="btn btn-ghost text-xl">Gadget Heaven</Link>
+                <Link to="/" className="font-bold btn btn-ghost text-xl">
+                  Gadget Heaven
+                </Link>
               </div>
               <div className="navbar-center hidden lg:flex">
                 <div className="menu menu-horizontal space-x-8 font-semibold">
-                  <NavLink to='/' className={({isActive})=> isActive?"underline font-bold":""}>Home</NavLink>
-                  <NavLink to='/statistics' className={({isActive})=> isActive?"underline":""}>Statistics</NavLink>
-                  <NavLink to='/dashboard' className={({isActive})=> isActive?"underline":""}>Dashboard</NavLink>
-                  <NavLink to='/about' className={({isActive})=> isActive?"underline":""}>About Us</NavLink>
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) =>
+                      isActive ? "underline font-bold" : ""
+                    }
+                  >
+                    Home
+                  </NavLink>
+                  <NavLink
+                    to="/statistics"
+                    className={({ isActive }) => (isActive ? "underline" : "")}
+                  >
+                    Statistics
+                  </NavLink>
+                  <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) => (isActive ? "underline" : "")}
+                  >
+                    Dashboard
+                  </NavLink>
+                  <NavLink
+                    to="/about"
+                    className={({ isActive }) => (isActive ? "underline" : "")}
+                  >
+                    About Us
+                  </NavLink>
                 </div>
               </div>
-              <div className="navbar-end">
+              <div className="navbar-end hidden lg:flex">
                 <div className="flex gap-4">
                   <button className="rounded-full bg-white h-10  px-3">
                     <i className="fa-solid fa-cart-shopping text-black"></i>
@@ -127,24 +198,87 @@ const Navbar = () => {
                 className="menu menu-sm dropdown-content bg-base-100 rounded-box z-[1] mt-3 w-52 p-2 shadow"
               >
                 <div className="menu menu-vertical space-y-4 font-semibold">
-                  <NavLink to='/' className={({isActive})=> isActive?"underline":""}>Home</NavLink>
-                  <NavLink to='/statistics' className={({isActive})=> isActive?"underline font-bold text-[#9538E2]":""}>Statistics</NavLink>
-                  <NavLink to='/dashboard' className={({isActive})=> isActive?"underline font-bold text-[#9538E2]":""}>Dashboard</NavLink>
-                  <NavLink to='/about' className={({isActive})=> isActive?"underline font-bold text-[#9538E2]":""}>About Us</NavLink>
+                  <NavLink
+                    to="/"
+                    className={({ isActive }) => (isActive ? "underline" : "")}
+                  >
+                    Home
+                  </NavLink>
+                  <NavLink
+                    to="/statistics"
+                    className={({ isActive }) =>
+                      isActive ? "underline font-bold text-[#9538E2]" : ""
+                    }
+                  >
+                    Statistics
+                  </NavLink>
+                  <NavLink
+                    to="/dashboard"
+                    className={({ isActive }) =>
+                      isActive ? "underline font-bold text-[#9538E2]" : ""
+                    }
+                  >
+                    Dashboard
+                  </NavLink>
+                  <NavLink
+                    to="/about"
+                    className={({ isActive }) =>
+                      isActive ? "underline font-bold text-[#9538E2]" : ""
+                    }
+                  >
+                    About Us
+                  </NavLink>
+                </div>
+
+                <div className="flex gap-4 mt-2 p-2 bg-base-200 rounded-2xl">
+                  <button className="rounded-full border border-[#d6d6d6d] bg-white h-10  px-3">
+                    <i className="fa-solid fa-cart-shopping text-black"></i>
+                  </button>
+                  <button className="rounded-full border border-[#d6d6d6d] bg-white h-10  px-3">
+                    <i className="fa-regular fa-heart text-black"></i>
+                  </button>
                 </div>
               </ul>
             </div>
-            <Link to='/' className="btn btn-ghost text-xl">Gadget Heaven</Link>
+            <Link to="/" className="btn btn-ghost text-xl">
+              Gadget Heaven
+            </Link>
           </div>
           <div className="navbar-center hidden lg:flex">
-          <div className="menu menu-horizontal space-x-8 font-semibold">
-             <NavLink to='/' className={({isActive})=> isActive?"underline":""}>Home</NavLink>
-             <NavLink to='/statistics' className={({isActive})=> isActive?"underline font-bold text-[#9538E2]":""}>Statistics</NavLink>
-             <NavLink to='/dashboard' className={({isActive})=> isActive?"underline font-bold text-[#9538E2]":""}>Dashboard</NavLink>
-             <NavLink to='/about' className={({isActive})=> isActive?"underline font-bold text-[#9538E2]":""}>About Us</NavLink>
+            <div className="menu menu-horizontal space-x-8 font-semibold">
+              <NavLink
+                to="/"
+                className={({ isActive }) => (isActive ? "underline" : "")}
+              >
+                Home
+              </NavLink>
+              <NavLink
+                to="/statistics"
+                className={({ isActive }) =>
+                  isActive ? "underline font-bold text-[#9538E2]" : ""
+                }
+              >
+                Statistics
+              </NavLink>
+              <NavLink
+                to="/dashboard"
+                className={({ isActive }) =>
+                  isActive ? "underline font-bold text-[#9538E2]" : ""
+                }
+              >
+                Dashboard
+              </NavLink>
+              <NavLink
+                to="/about"
+                className={({ isActive }) =>
+                  isActive ? "underline font-bold text-[#9538E2]" : ""
+                }
+              >
+                About Us
+              </NavLink>
+            </div>
           </div>
-          </div>
-          <div className="navbar-end">
+          <div className="navbar-end hidden lg:flex">
             <div className="flex gap-4">
               <button className="rounded-full bg-white h-10 border-2 px-3">
                 <i className="fa-solid fa-cart-shopping text-black"></i>

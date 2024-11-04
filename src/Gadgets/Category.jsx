@@ -14,7 +14,8 @@ const Category = ({ categories }) => {
                 }`
               }
             >
-              {category.category}
+              {/* {category.category} */}
+              {category.slug}
             </NavLink>
           </div>
         ))}
