@@ -1,11 +1,11 @@
-import { NavLink, useLocation } from "react-router-dom";
+import { Link, NavLink, useLocation } from "react-router-dom";
 import bannerImg from "../../assets/banner.jpg";
 const Navbar = () => {
   const { pathname } = useLocation();
   return (
     <div>
       {pathname === "/" ? (
-        <div className="pb-96">
+        <div className="pb-96 bg-[#f6f6f6]">
           <div className="m-8 bg-[#9538E2] rounded-3xl min-h-screen pb-12">
             <div className="navbar text-white w-11/12 mx-auto md:w-10/12 max-w-screen-2xl">
               <div className="navbar-start">
@@ -38,16 +38,18 @@ const Navbar = () => {
                   <NavLink to='/' className={({isActive})=> isActive?"underline":""}>Home</NavLink>
                   <NavLink to='/statistics' className={({isActive})=> isActive?"underline":""}>Statistics</NavLink>
                   <NavLink to='/dashboard' className={({isActive})=> isActive?"underline":""}>Dashboard</NavLink>
+                  <NavLink to='/about' className={({isActive})=> isActive?"underline":""}>About Us</NavLink>
                 </div>
                   </ul>
                 </div>
-                <a className="btn btn-ghost text-xl">Gadget Heaven</a>
+                <Link to='/' className="btn btn-ghost text-xl">Gadget Heaven</Link>
               </div>
               <div className="navbar-center hidden lg:flex">
                 <div className="menu menu-horizontal space-x-8 font-semibold">
                   <NavLink to='/' className={({isActive})=> isActive?"underline font-bold":""}>Home</NavLink>
                   <NavLink to='/statistics' className={({isActive})=> isActive?"underline":""}>Statistics</NavLink>
                   <NavLink to='/dashboard' className={({isActive})=> isActive?"underline":""}>Dashboard</NavLink>
+                  <NavLink to='/about' className={({isActive})=> isActive?"underline":""}>About Us</NavLink>
                 </div>
               </div>
               <div className="navbar-end">
@@ -84,7 +86,7 @@ const Navbar = () => {
               </div>
 
               <div className="relative">
-                <div className="absolute left-1/2 transform -translate-x-1/2  mt-10 w-11/12 md:w-10/12 mx-auto border-white border-2 rounded-3xl">
+                <div className="absolute left-1/2 transform -translate-x-1/2  mt-10 w-11/12 md:w-10/12 mx-auto border-[#f6f6f6] border-2 rounded-3xl">
                   <img
                     className="rounded-3xl p-4 w-full h-[556px]"
                     src={bannerImg}
@@ -97,7 +99,7 @@ const Navbar = () => {
           </div>
         </div>
       ) : (
-        <div className="navbar mt-8 w-11/12 mx-auto md:w-10/12 max-w-screen-2xl">
+        <div className="navbar my-8 w-11/12 mx-auto md:w-10/12 max-w-screen-2xl">
           <div className="navbar-start">
             <div className="dropdown">
               <div
@@ -128,16 +130,18 @@ const Navbar = () => {
                   <NavLink to='/' className={({isActive})=> isActive?"underline":""}>Home</NavLink>
                   <NavLink to='/statistics' className={({isActive})=> isActive?"underline font-bold text-[#9538E2]":""}>Statistics</NavLink>
                   <NavLink to='/dashboard' className={({isActive})=> isActive?"underline font-bold text-[#9538E2]":""}>Dashboard</NavLink>
+                  <NavLink to='/about' className={({isActive})=> isActive?"underline font-bold text-[#9538E2]":""}>About Us</NavLink>
                 </div>
               </ul>
             </div>
-            <a className="btn btn-ghost text-xl">Gadget Heaven</a>
+            <Link to='/' className="btn btn-ghost text-xl">Gadget Heaven</Link>
           </div>
           <div className="navbar-center hidden lg:flex">
           <div className="menu menu-horizontal space-x-8 font-semibold">
              <NavLink to='/' className={({isActive})=> isActive?"underline":""}>Home</NavLink>
              <NavLink to='/statistics' className={({isActive})=> isActive?"underline font-bold text-[#9538E2]":""}>Statistics</NavLink>
              <NavLink to='/dashboard' className={({isActive})=> isActive?"underline font-bold text-[#9538E2]":""}>Dashboard</NavLink>
+             <NavLink to='/about' className={({isActive})=> isActive?"underline font-bold text-[#9538E2]":""}>About Us</NavLink>
           </div>
           </div>
           <div className="navbar-end">
