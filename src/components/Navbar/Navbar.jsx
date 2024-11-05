@@ -88,7 +88,7 @@ const Navbar = () => {
                     </div>
                   </ul>
                 </div>
-                <Link to="/" className="font-bold btn btn-ghost text-xl">
+                <Link to="/" className="font-bold text-xl">
                   Gadget Heaven
                 </Link>
               </div>
@@ -239,7 +239,7 @@ const Navbar = () => {
                 </div>
               </ul>
             </div>
-            <Link to="/" className="btn btn-ghost text-xl">
+            <Link to="/" className="font-bold text-xl">
               Gadget Heaven
             </Link>
           </div>

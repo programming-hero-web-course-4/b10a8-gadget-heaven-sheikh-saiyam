@@ -1,3 +1,5 @@
+import { toast } from "react-toastify";
+// for add to cart
 const getAddToAllCart = () => {
   const cart = localStorage.getItem("Cart");
   if (cart) {
@@ -16,7 +18,9 @@ const addToCart = (gadget) => {
   cart.push(gadget);
   localStorage.setItem("Cart", JSON.stringify(cart));
   
-  alert("Successfully Added");
+  toast.success("Product Added Successfully");
 };
-
+// for add to cart
+// for add to wishlist
+// for add to wishlist
 export { addToCart, getAddToAllCart };

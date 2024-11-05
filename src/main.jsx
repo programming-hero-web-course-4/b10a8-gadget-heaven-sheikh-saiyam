@@ -11,6 +11,8 @@ import ErrorPage from "./components/ErrorPage/ErrorPage";
 import HomePage from "./components/HomePage/HomePage";
 import Gadgets from "./Gadgets/Gadgets";
 import GadgetDetails from "./Gadgets/GadgetDetails";
+import { ToastContainer } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 const router = createBrowserRouter([
   {
@@ -59,6 +61,16 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById("root")).render(
   <StrictMode>
+     <ToastContainer
+        position="top-right"
+        autoClose={2000}
+        hideProgressBar={false}
+        newestOnTop={false}
+        closeOnClick
+        rtl={false}
+        pauseOnFocusLoss
+        draggable
+      />
     <RouterProvider router={router} />
   </StrictMode>
 );
