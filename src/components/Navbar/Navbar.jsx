@@ -5,18 +5,17 @@ const Navbar = () => {
   const { pathname } = useLocation();
   console.log(pathname);
   const [isActive, setIsActive] = useState(false);
-  const pathNames = ["/statistics", "/dashboard", "/about" , "/gadgets"];
-
+  const pathNames = ["/statistics", "/dashboard", "/about", "/gadgets"];
 
   useEffect(() => {
-    const include = pathNames.some((path)=> pathname.includes(path));
+    const include = pathNames.some((path) => pathname.includes(path));
     setIsActive(include);
   }, [pathname]);
   return (
     <div>
       {!isActive ? (
-        <div className="pb-96 bg-[#f6f6f6]">
-          <div className="m-8 bg-[#9538E2] rounded-3xl min-h-screen pb-12">
+        <div className="pb-96 bg-[#f6f6f6] pt-8">
+          <div className="mx-8 bg-[#9538E2] rounded-3xl min-h-screen pb-12">
             <div className="navbar text-white w-11/12 mx-auto md:w-10/12 max-w-screen-2xl">
               <div className="navbar-start">
                 <div className="dropdown text-black">
@@ -150,9 +149,9 @@ const Navbar = () => {
                 </p>
 
                 <div className="text-center mt-8">
-                  <button className="btn btn-wide bg-white rounded-3xl font-bold text-[#9538E2]">
+                  <Link to='/dashboard' className="btn btn-wide bg-white rounded-3xl font-bold text-[#9538E2]">
                     Shop Now
-                  </button>
+                  </Link>
                 </div>
               </div>
 

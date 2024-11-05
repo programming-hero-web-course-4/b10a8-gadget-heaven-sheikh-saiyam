@@ -1,16 +1,29 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
-
+import {addToCart, getAddToAllCart} from "../components/utility/localStorage"
 const GadgetDetails = () => {
   const { product_id } = useParams();
   const gadgetDetail = useLoaderData();
-  const [gadgetDetails, setGadgetDetails] = useState([]);
+  const [gadgetDetails, setGadgetDetails] = useState({});
+  const [isCartToCart, setIsCartToCart] = useState(false);
   useEffect(() => {
     const details = gadgetDetail.find(
-      (detail) => detail.product_id === product_id
+      (detail) => detail.product_id == product_id
     );
     setGadgetDetails(details);
-  }, [gadgetDetail, product_id]);
+
+    const Carts = getAddToAllCart();
+    const isExist = Carts.find((item) => item.product_id == gadgetDetails.product_id);
+    if (isExist) {
+      setIsCartToCart(true);
+    }
+  }, [gadgetDetail, gadgetDetails.product_id, product_id]);
+
+  const handleAddToCart= (gadgetDetails) => {
+    addToCart(gadgetDetails);
+    setIsCartToCart(true);
+    console.log(gadgetDetails)
+  };
 
   const {
     product_title,
@@ -22,6 +35,8 @@ const GadgetDetails = () => {
     rating,
     warranty,
   } = gadgetDetails;
+
+
   return (
     <div>
       <div className="bg-[#9538E2] py-12">
@@ -35,12 +50,18 @@ const GadgetDetails = () => {
               have it all!
             </p>
 
-            <div className="mt-4">
+            <div className="mt-4 flex gap-3 flex-wrap justify-center">
               <Link
                 to="/"
                 className="btn-wide btn bg-white text-purple-600 rounded-full font-semibold hover:bg-purple-200"
               >
                 Go to product page
+              </Link>
+              <Link
+                to="/dashboard"
+                className="btn-wide btn bg-white text-purple-600 rounded-full font-semibold hover:bg-purple-200"
+              >
+                Go to Dashboard
               </Link>
             </div>
           </div>
@@ -112,7 +133,7 @@ const GadgetDetails = () => {
 
                 {/* buttons div */}
                 <div className="flex gap-3 mt-4 ">
-                  <button className="btn md:btn-wide bg-[#9538E2] text-white rounded-full">
+                  <button disabled={isCartToCart} onClick={() => handleAddToCart(gadgetDetails)} className="btn md:btn-wide bg-[#9538E2] text-white rounded-full">
                     Add To Card
                     <i className="fa-solid fa-cart-shopping"></i>
                   </button>

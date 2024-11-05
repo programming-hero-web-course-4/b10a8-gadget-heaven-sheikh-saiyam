@@ -13,7 +13,7 @@ const Footer = () => {
           {/* 1st div */}
 
           <div className="text-center">
-            <h6 className="font-bold">Company</h6>
+            <h6 className=" font-bold mb-2 ">Company</h6>
             <li className="list-none link link-hover">About Us</li>
             <li className="list-none link link-hover">Careers</li>
             <li className="list-none link link-hover">Contact</li>
@@ -21,7 +21,7 @@ const Footer = () => {
           {/* 1st div */}
           {/* 2nd div */}
           <div className="text-center">
-            <h6 className="font-bold">Services</h6>
+            <h6 className=" font-bold mb-2">Services</h6>
             <li className="list-none link link-hover">Product Support</li>
             <li className="list-none link link-hover">Product Support</li>
             <li className="list-none link link-hover">Shipping & Delivery</li>
@@ -30,7 +30,7 @@ const Footer = () => {
           {/* 2nd div */}
           {/* 3rd div */}
           <div className="text-center">
-            <h6 className="font-bold">Legal</h6>
+            <h6 className=" font-bold mb-2">Legal</h6>
             <li className="list-none link link-hover">Terms of Service</li>
             <li className="list-none link link-hover">Privacy Policy</li>
             <li className="list-none link link-hover"> Cookie Policy</li>
