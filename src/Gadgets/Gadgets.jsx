@@ -21,7 +21,7 @@ const Gadgets = () => {
 
   //   my code
   useEffect(() => {
-    if(category === "") {
+    if(category === "All") {
         setFilteredGadgets(gadgets)
     } else {
     if (category) {
