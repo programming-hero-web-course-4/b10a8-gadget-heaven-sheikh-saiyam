@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
-import {addToCart, getAddToAllCart} from "../components/utility/localStorage"
+import {addToCart, addToWishlist, getAddToAllCart, getWishlist} from "../components/utility/localStorage"
 const GadgetDetails = () => {
   const { product_id } = useParams();
   const gadgetDetail = useLoaderData();
@@ -12,17 +12,26 @@ const GadgetDetails = () => {
     );
     setGadgetDetails(details);
 
-    const Carts = getAddToAllCart();
-    const isExist = Carts.find((item) => item.product_id == gadgetDetails.product_id);
-    if (isExist) {
+    // const Carts = getAddToAllCart();
+    // const isExist = Carts.find((item) => item.product_id == gadgetDetails.product_id);
+    // if (isExist) {
+    //   setIsCartToCart(true);
+    // }
+    const wishlist = getWishlist();
+    const isExistWishlist = wishlist.find((item) => item.product_id == details.product_id);
+    if (isExistWishlist) {
       setIsCartToCart(true);
     }
   }, [gadgetDetail, gadgetDetails.product_id, product_id]);
 
   const handleAddToCart= (gadgetDetails) => {
     addToCart(gadgetDetails);
-    setIsCartToCart(true);
+   
     console.log(gadgetDetails)
+  };
+  const handleAddToWishList= (gadgetDetails) => {
+    addToWishlist(gadgetDetails)
+    setIsCartToCart(true);
   };
 
   const {
@@ -133,11 +142,11 @@ const GadgetDetails = () => {
 
                 {/* buttons div */}
                 <div className="flex gap-3 mt-4 ">
-                  <button disabled={isCartToCart} onClick={() => handleAddToCart(gadgetDetails)} className="btn md:btn-wide bg-[#9538E2] text-white rounded-full">
+                  <button  onClick={() => handleAddToCart(gadgetDetails)} className="btn md:btn-wide bg-[#9538E2] text-white rounded-full">
                     Add To Card
                     <i className="fa-solid fa-cart-shopping"></i>
                   </button>
-                  <button className="rounded-full border-2 border-[#d1d1d1] btn bg-transparent ">
+                  <button disabled={isCartToCart} onClick={() => handleAddToWishList(gadgetDetails)} className="rounded-full border-2 border-[#d1d1d1] btn bg-transparent ">
                     <i className="fa-regular fa-heart text-lg"></i>
                   </button>
                 </div>

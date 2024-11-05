@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { getAddToAllCart } from "../utility/localStorage";
+import { addToWishlist, getAddToAllCart, getWishlist } from "../utility/localStorage";
 import { NavLink } from "react-router-dom";
 import { Tab, Tabs, TabList, TabPanel } from "react-tabs";
 import "react-tabs/style/react-tabs.css";
@@ -7,11 +7,17 @@ import modalImg from "../../assets/Group.png";
 import { toast } from "react-toastify";
 const Dashboard = () => {
   const [gadget, setGadget] = useState([]);
+  const [gadgetWish, setGadgetWish] = useState([]);
   console.log(gadget);
   useEffect(() => {
     const cart = getAddToAllCart();
     setGadget(cart);
   }, []);
+
+  useEffect(()=>{
+    const wishlist = getWishlist();
+    setGadgetWish(wishlist)
+  },[])
 
   const totalCost = gadget.reduce((sum, gadget) => sum + gadget.price, 0);
 
@@ -22,17 +28,17 @@ const Dashboard = () => {
   };
 
   // Function to clear all localStorage data
-  function clearLocalStorage() {
-    // if(gadget.length === 0 ) {
-    //   toast.error("No products are selected");
-    // } else {
-    // localStorage.clear();
-    // toast.success("Payment Successful");
-    // setGadget([]);}
+  const clearLocalStorage = () => {
     localStorage.clear();
     toast.success("Payment Successful");
     setGadget([]);
   }
+
+  const clearWishlist = () => {
+    localStorage.removeItem('Wishlist')
+    setGadgetWish([]);
+  }
+  
 
   return (
     <div>
@@ -76,13 +82,15 @@ const Dashboard = () => {
         </div>
       </div>
       {/* btn div */}
+
+      {/* cart div */}
       <div className="bg-[#f6f6f6] pt-12 pb-24">
         <div className="w-11/12 mx-auto md:w-10/12 max-w-screen-2xl ">
           {/* sort by & purchase div  */}
           <div className="mb-12 flex justify-between items-center gap-4 flex-wrap">
             <div>
               <h1 className="text-2xl font-bold ">
-                Cart: {gadget.length} item
+                Cart: {gadget.length === 0 ?"No item selected":`${gadgetWish.length}item`} 
               </h1>
             </div>
             <div className="flex justify-between items-center gap-4">
@@ -191,6 +199,71 @@ const Dashboard = () => {
           {/* cart div */}
         </div>
       </div>
+      {/* cart div */}
+
+      {/* wishlist div */}
+      <div className="bg-[#f6f6f6] pt-12 pb-24">
+        <div className="w-11/12 mx-auto md:w-10/12 max-w-screen-2xl ">
+          {/* wishlist clear div */}
+          <div className="mb-12 flex justify-between items-center gap-4 flex-wrap">
+            <div>
+              <h1 className="text-2xl font-bold ">
+                Wishlist: {gadgetWish.length === 0 ?"No item selected":`${gadgetWish.length}item`}
+              </h1>
+            </div>
+            <div className="flex justify-between items-center gap-4">
+              <div>
+                <button onClick={clearWishlist}
+                  className="px-8 border-2 btn rounded-full bg-[#9538E2] text-white  hover:bg-white hover:text-[#9538E2] hover:border-none"
+                >
+                  Clear Wishlist
+                </button>
+              </div>
+            </div>
+          </div>
+          {/* wishlist clear div */}
+
+          {/* cart div */}
+          <div className="space-y-4">
+            {gadgetWish.map((item, index) => (
+              <div key={index} className="bg-white rounded-2xl p-6">
+                <div className="space-y-4 sm:flex sm:space-y-0 gap-4 items-center">
+                  <div className="w-full sm:w-4/12">
+                    <img
+                      className="w-full h-[124px] border-2 rounded-2xl"
+                      src={item.product_image}
+                      alt=""
+                    />
+                  </div>
+                  <div className="w-full flex justify-between item-center gap-4">
+                    <div className="space-y-2">
+                      <h1 className="font-bold text-2xl">
+                        {item.product_title}
+                      </h1>
+                      <p className="text-[#6b6b6f] text-lg">
+                        {item.description}
+                      </p>
+                      <p className="font-semibold ">Price: ${item.price}</p>
+                    </div>
+                    <div>
+                      <button
+                        className="rounded-full border border-red-500 
+                      bg-white h-12 px-3"
+                      >
+                        ❌
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+          {/* cart div */}
+        </div>
+      </div>
+      {/* wishlist div */}
+
+      
     </div>
   );
 };
