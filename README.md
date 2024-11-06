@@ -13,6 +13,8 @@
 
 **5. useLoaderData() & useLocation()**
 
+## What I have used for handling and managing data : local storage
+
 ##  5 features : 
 
 **1. Fetching Cart Data from Local Storage**
