@@ -1,11 +1,19 @@
+import { Helmet } from "react-helmet";
 import { Link } from "react-router-dom";
 
 const ErrorPage = () => {
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Page Not Fount || Gadget Heaven</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="px-12 min-h-screen bg-purple-600 flex flex-col items-center justify-center text-white">
         <div className="text-center">
-          <h1 className="text-5xl mt-12 font-bold mb-6">Oops! Page Not Found</h1>
+          <h1 className="text-5xl mt-12 font-bold mb-6">
+            Oops! Page Not Found
+          </h1>
           <p className="text-lg mb-8">
             It looks like the page you are looking for does not exist. Lets get
             you back on track.

@@ -14,7 +14,7 @@ const addToCart = (gadget) => {
   const cart = getAddToAllCart();
   cart.push(gadget);
   localStorage.setItem("Cart", JSON.stringify(cart));
-  toast.success("Product Added Successfully");
+  toast.success("Product Added to Cart");
 };
 // for add to cart
 

@@ -144,7 +144,6 @@ const Dashboard = () => {
                       disabled={isCartIsEmpty}
                       onClick={() => {
                         document.getElementById("my_modal_1").showModal();
-                        clearLocalStorage();
                       }}
                       className="px-8 border-2 btn rounded-full bg-[#9538E2] text-white  hover:bg-white hover:text-[#9538E2] hover:border-none"
                     >
@@ -175,16 +174,19 @@ const Dashboard = () => {
                             <p className="text-[#6b6b6f] mb-2 font-semibold">
                               Thanks For Purchasing
                             </p>
-                            {/* <p className="text-[#6b6b6f] mb-4 font-semibold">
+                            <p className="text-[#6b6b6f] mb-4 font-semibold">
                               Total: ${totalCost}
-                            </p> */}
+                            </p>
                           </div>
                         </div>
                         <div className="text-center">
                           <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
                             <button
-                              onClick={() => navigate("/")}
+                              onClick={() => {
+                                clearLocalStorage();
+                                navigate("/");
+                              }}
                               className="btn w-full rounded-full font-bold btn-active"
                             >
                               Close
