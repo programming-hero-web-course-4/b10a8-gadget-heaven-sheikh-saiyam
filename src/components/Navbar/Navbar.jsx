@@ -1,5 +1,5 @@
 import { Link, NavLink, useLocation } from "react-router-dom";
-import bannerImg from "../../assets/banner.jpg";
+import bannerImg from "../../assets/bannerImg.png";
 import { useEffect, useState } from "react";
 const Navbar = () => {
   const { pathname } = useLocation();
@@ -13,8 +13,8 @@ const Navbar = () => {
   return (
     <div>
       {!isActive ? (
-        <div className="pb-96 bg-[#f6f6f6] pt-8">
-          <div className="mx-8 bg-[#9538E2] rounded-3xl min-h-screen pb-12">
+        <div className="pb-24 bg-[#f6f6f6] pt-8">
+          <div className="mx-8 bg-[#9538E2] rounded-t-3xl  pb-8">
             <div className="navbar text-white w-11/12 mx-auto md:w-10/12 max-w-screen-2xl">
               <div className="navbar-start">
                 <div className="dropdown text-black">
@@ -148,23 +148,23 @@ const Navbar = () => {
                 </p>
 
                 <div className="text-center mt-8">
-                  <Link to='/dashboard' className="btn btn-wide bg-white rounded-3xl font-bold text-[#9538E2]">
+                  <Link
+                    to="/dashboard"
+                    className="btn btn-wide rounded-full bg-white font-bold text-[#9538E2]"
+                  >
                     Shop Now
                   </Link>
                 </div>
               </div>
-
-              <div className="relative">
-                <div className="absolute left-1/2 transform -translate-x-1/2  mt-10 w-11/12 md:w-10/12 mx-auto border-[#f6f6f6] border-2 rounded-3xl">
-                  <img
-                    className="rounded-3xl p-4 w-full h-[556px]"
-                    src={bannerImg}
-                    alt=""
-                  />
-                </div>
-              </div>
             </div>
             {/* banner section */}
+          </div>
+          <div>
+            <img
+              className="rounded-b-3xl px-8 w-full 2xl:h-[560px]"
+              src={bannerImg}
+              alt=""
+            />
           </div>
         </div>
       ) : (

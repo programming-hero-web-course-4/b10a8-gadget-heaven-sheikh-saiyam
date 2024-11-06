@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useLoaderData, useParams } from "react-router-dom";
+import { Link, useLoaderData, useLocation, useParams } from "react-router-dom";
 import {
   addToCart,
   addToWishlist,
@@ -8,6 +8,13 @@ import {
 } from "../components/utility/localStorage";
 import { Helmet } from "react-helmet";
 const GadgetDetails = () => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo({
+      top: 0,
+      behavior: "smooth",
+    });
+  }, [pathname]);
   const { product_id } = useParams();
   const gadgetDetail = useLoaderData();
 
@@ -97,7 +104,7 @@ const GadgetDetails = () => {
           </div>
         </div>
       </div>
-
+      
       {/* main div  */}
       <div className="bg-[#f6f6f6] py-12">
         <div className="w-11/12 mx-auto md:w-10/12 max-w-screen-2xl">
@@ -187,6 +194,7 @@ const GadgetDetails = () => {
         </div>
         {/* main div  */}
       </div>
+      {/* main div  */}
     </div>
   );
 };

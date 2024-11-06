@@ -205,7 +205,7 @@ const Dashboard = () => {
                     <div className="space-y-4 sm:flex sm:space-y-0 gap-4 items-center">
                       <div className="w-full sm:w-4/12">
                         <img
-                          className="w-full h-[124px] border-2 rounded-2xl"
+                          className="w-full h-[140px] border-2 rounded-2xl"
                           src={item.product_image}
                           alt=""
                         />
@@ -273,7 +273,7 @@ const Dashboard = () => {
                     <div className="space-y-4 sm:flex sm:space-y-0 gap-4 items-center">
                       <div className="w-full sm:w-4/12">
                         <img
-                          className="w-full h-[124px] border-2 rounded-2xl"
+                          className="w-full h-[190px] border-2 rounded-2xl"
                           src={item.product_image}
                           alt=""
                         />
@@ -287,6 +287,11 @@ const Dashboard = () => {
                             {item.description}
                           </p>
                           <p className="font-semibold ">Price: ${item.price}</p>
+                          <div>
+                            <button className="btn px-8  bg-[#9538E2] text-white rounded-full">
+                              Add to Cart
+                            </button>
+                          </div>
                         </div>
                         <div>
                           <button

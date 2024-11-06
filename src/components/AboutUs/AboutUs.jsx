@@ -25,7 +25,7 @@ const AboutUs = () => {
 
       {/* about us section  */}
       <div className="bg-[#f6f6f6] py-16">
-        <div className="w-11/12 md:w-10/12 mx-auto">
+        <div className="w-11/12 md:w-10/12 mx-auto max-w-screen-2xl">
           <div className="mx-auto flex flex-col-reverse space-y-6 lg:flex lg:flex-row lg:space-y-0 justify-between gap-12 ">
             <div className="lg:w-7/12">
               <h1 className="font-bold text-3xl md:text-4xl mb-4">
@@ -65,7 +65,7 @@ const AboutUs = () => {
             </div>
             <div className="w-full lg:w-5/12 flex justify-center">
               <img
-                className="w-full h-auto rounded-3xl shadow-2xl transform transition-all hover:scale-105"
+                className="rounded-3xl shadow-2xl transform transition-all hover:scale-105"
                 src={bannerImg}
                 alt="Gadgets at Gadget Heaven"
               />
@@ -76,9 +76,9 @@ const AboutUs = () => {
             <p className="text-lg  font-semibold text-center md:text-xl leading-relaxed mb-6">
               From state-of-the-art smart devices to cutting-edge accessories,
               we curate the best products that combine functionality with style.
-              Our goal is simple – to provide you with the tools and technology
+              <span className="hidden md:inline">Our goal is simple – to provide you with the tools and technology
               that transform your life, making it more efficient, fun, and
-              connected.
+              connected.</span>
             </p>
             {/* faq section */}
             <div id="faq">
