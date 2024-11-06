@@ -1,38 +1,55 @@
 import { useEffect, useState } from "react";
 import { Link, useLoaderData, useParams } from "react-router-dom";
-import {addToCart, addToWishlist, getAddToAllCart, getWishlist} from "../components/utility/localStorage"
+import {
+  addToCart,
+  addToWishlist,
+  getAddToAllCart,
+  getWishlist,
+} from "../components/utility/localStorage";
+import { Helmet } from "react-helmet";
 const GadgetDetails = () => {
   const { product_id } = useParams();
   const gadgetDetail = useLoaderData();
+
   const [gadgetDetails, setGadgetDetails] = useState({});
-  const [isCartToCart, setIsCartToCart] = useState(false);
+  const [isExistInWishList, setExistInWishList] = useState(false);
+  const [isExistInAddToCart, setIsExistInAddToCart] = useState(false);
   useEffect(() => {
     const details = gadgetDetail.find(
       (detail) => detail.product_id == product_id
     );
     setGadgetDetails(details);
 
-    // const Carts = getAddToAllCart();
-    // const isExist = Carts.find((item) => item.product_id == gadgetDetails.product_id);
-    // if (isExist) {
-    //   setIsCartToCart(true);
-    // }
+    const carts = getAddToAllCart();
+    const isExist = carts.find(
+      (item) => item.product_id == gadgetDetails.product_id
+    );
+    if (isExist) {
+      setIsExistInAddToCart(true);
+    }
+
     const wishlist = getWishlist();
-    const isExistWishlist = wishlist.find((item) => item.product_id == details.product_id);
+    const isExistWishlist = wishlist.find(
+      (item) => item.product_id == details.product_id
+    );
     if (isExistWishlist) {
-      setIsCartToCart(true);
+      setExistInWishList(true);
     }
   }, [gadgetDetail, gadgetDetails.product_id, product_id]);
 
-  const handleAddToCart= (gadgetDetails) => {
+  // function for add to cart
+  const handleAddToCart = (gadgetDetails) => {
     addToCart(gadgetDetails);
-   
-    console.log(gadgetDetails)
+    setIsExistInAddToCart(true);
   };
-  const handleAddToWishList= (gadgetDetails) => {
-    addToWishlist(gadgetDetails)
-    setIsCartToCart(true);
+  // function for add to cart
+
+  // function for add to wishlist
+  const handleAddToWishList = (gadgetDetails) => {
+    addToWishlist(gadgetDetails);
+    setExistInWishList(true);
   };
+  // function for add to wishlist
 
   const {
     product_title,
@@ -45,9 +62,13 @@ const GadgetDetails = () => {
     warranty,
   } = gadgetDetails;
 
-
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Details || Gadget Heaven</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="bg-[#9538E2] py-12">
         <div className="w-11/12 mx-auto">
           <div className="text-center text-white">
@@ -142,11 +163,19 @@ const GadgetDetails = () => {
 
                 {/* buttons div */}
                 <div className="flex gap-3 mt-4 ">
-                  <button  onClick={() => handleAddToCart(gadgetDetails)} className="btn md:btn-wide bg-[#9538E2] text-white rounded-full">
+                  <button
+                    disabled={isExistInAddToCart}
+                    onClick={() => handleAddToCart(gadgetDetails)}
+                    className="btn md:btn-wide bg-[#9538E2] text-white rounded-full"
+                  >
                     Add To Card
                     <i className="fa-solid fa-cart-shopping"></i>
                   </button>
-                  <button disabled={isCartToCart} onClick={() => handleAddToWishList(gadgetDetails)} className="rounded-full border-2 border-[#d1d1d1] btn bg-transparent ">
+                  <button
+                    disabled={isExistInWishList}
+                    onClick={() => handleAddToWishList(gadgetDetails)}
+                    className="rounded-full border-2 border-[#d1d1d1] btn bg-transparent "
+                  >
                     <i className="fa-regular fa-heart text-lg"></i>
                   </button>
                 </div>

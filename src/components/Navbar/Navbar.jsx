@@ -3,7 +3,6 @@ import bannerImg from "../../assets/banner.jpg";
 import { useEffect, useState } from "react";
 const Navbar = () => {
   const { pathname } = useLocation();
-  console.log(pathname);
   const [isActive, setIsActive] = useState(false);
   const pathNames = ["/statistics", "/dashboard", "/about", "/gadgets"];
 

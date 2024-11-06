@@ -1,6 +1,13 @@
+import { Helmet } from "react-helmet";
+
 const Statistics = () => {
   return (
     <div className="bg-[#9538E2] py-12">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Statistics || Gadget Heaven</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="text-center text-white">
         <div className="w-11/12 mx-auto">
           <h1 className="font-bold text-3xl">Statistics</h1>

@@ -6,7 +6,6 @@ const getAddToAllCart = () => {
     const parseCart = JSON.parse(cart);
     return parseCart;
   } else {
-    console.log([]);
     return [];
   }
 };
@@ -26,7 +25,6 @@ const getWishlist = () => {
     const parseWishlist = JSON.parse(wishlist);
     return parseWishlist;
   } else {
-    console.log([]);
     return [];
   }
 };
@@ -36,7 +34,7 @@ const addToWishlist = (gadget) => {
   const wishlist = getWishlist();
   wishlist.push(gadget);
   localStorage.setItem("Wishlist", JSON.stringify(wishlist));
-  toast.success("Product Added to Wishlist Successfully");
+  toast.success("Product Added to Wishlist");
 };
 // for add to wishlist
 

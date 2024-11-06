@@ -3,13 +3,19 @@ import { getAddToAllCart, getWishlist } from "../utility/localStorage";
 import "react-tabs/style/react-tabs.css";
 import modalImg from "../../assets/Group.png";
 import { toast } from "react-toastify";
+import { useNavigate } from "react-router-dom";
+import { Helmet } from "react-helmet";
 const Dashboard = () => {
+  const navigate = useNavigate();
   const [gadget, setGadget] = useState([]);
   const [gadgetWish, setGadgetWish] = useState([]);
-  console.log(gadget);
+  const [isCartIsEmpty, setIsCartIsEmpty] = useState();
   useEffect(() => {
     const cart = getAddToAllCart();
     setGadget(cart);
+    // function for disable the purchase btn if cart is empty
+    setIsCartIsEmpty(cart.length === 0);
+    // function for disable the purchase btn if cart is empty
   }, []);
 
   useEffect(() => {
@@ -28,13 +34,13 @@ const Dashboard = () => {
   // Function to clear all localStorage data
   const clearLocalStorage = () => {
     localStorage.removeItem("Cart");
-    toast.success("Payment Successful");
     setGadget([]);
   };
 
   // Function to clear all wishlist data
   const clearWishlist = () => {
     localStorage.removeItem("Wishlist");
+    toast.success("Wishlist Clear");
     setGadgetWish([]);
   };
 
@@ -61,6 +67,11 @@ const Dashboard = () => {
 
   return (
     <div>
+      <Helmet>
+        <meta charSet="utf-8" />
+        <title>Dashboard || Gadget Heaven</title>
+        <link rel="canonical" href="http://mysite.com/example" />
+      </Helmet>
       <div className="bg-[#9538E2] pt-12 pb-8">
         <div className="text-center text-white">
           <div className="w-11/12 mx-auto">
@@ -130,9 +141,11 @@ const Dashboard = () => {
                   </div>
                   <div>
                     <button
-                      onClick={() =>
-                        document.getElementById("my_modal_1").showModal()
-                      }
+                      disabled={isCartIsEmpty}
+                      onClick={() => {
+                        document.getElementById("my_modal_1").showModal();
+                        clearLocalStorage();
+                      }}
                       className="px-8 border-2 btn rounded-full bg-[#9538E2] text-white  hover:bg-white hover:text-[#9538E2] hover:border-none"
                     >
                       Purchase
@@ -162,16 +175,16 @@ const Dashboard = () => {
                             <p className="text-[#6b6b6f] mb-2 font-semibold">
                               Thanks For Purchasing
                             </p>
-                            <p className="text-[#6b6b6f] mb-4 font-semibold">
+                            {/* <p className="text-[#6b6b6f] mb-4 font-semibold">
                               Total: ${totalCost}
-                            </p>
+                            </p> */}
                           </div>
                         </div>
                         <div className="text-center">
                           <form method="dialog">
                             {/* if there is a button in form, it will close the modal */}
                             <button
-                              onClick={clearLocalStorage}
+                              onClick={() => navigate("/")}
                               className="btn w-full rounded-full font-bold btn-active"
                             >
                               Close

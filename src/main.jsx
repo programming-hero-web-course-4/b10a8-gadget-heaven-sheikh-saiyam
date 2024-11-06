@@ -17,6 +17,7 @@ import Gadgets from "./Gadgets/Gadgets";
 import GadgetDetails from "./Gadgets/GadgetDetails";
 import { ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import { Helmet } from "react-helmet";
 
 const router = createBrowserRouter([
   {
@@ -83,6 +84,11 @@ createRoot(document.getElementById("root")).render(
       pauseOnFocusLoss
       draggable
     />
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>Home || Gadget Heaven</title>
+      <link rel="canonical" href="http://mysite.com/example" />
+    </Helmet>
     <RouterProvider router={router} />
   </StrictMode>
 );
