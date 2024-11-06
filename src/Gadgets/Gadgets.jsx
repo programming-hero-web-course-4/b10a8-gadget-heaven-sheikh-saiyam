@@ -6,18 +6,6 @@ const Gadgets = () => {
   const gadgets = useLoaderData();
   const { category } = useParams();
   const [filteredGadgets, setFilteredGadgets] = useState([]);
-  // main code
-  //   useEffect(() => {
-  //     if (category) {
-  //       const filteredByCategory = [...gadgets].filter(
-  //         (gadget) => gadget.category === category
-  //       );
-  //       setFilteredGadgets(filteredByCategory);
-  //     } else {
-  //       setFilteredGadgets(gadgets);
-  //     }
-  //   }, [category, gadgets]);
-  //   main code
 
   //   my code
   useEffect(() => {
